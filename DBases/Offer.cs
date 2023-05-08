@@ -12,10 +12,5 @@
         string additionalCondition;
         bool ifPaid;
         decimal MaximalSalary;
-
-
-
-
-
     }
 }
