@@ -2,5 +2,7 @@
 {
     public class Mem
     {
+        int IdMem;
+        string MemLink;
     }
 }
