@@ -2,6 +2,7 @@
 {
     public class OfferMemAuthor
     {
-
+        int offer;
+        int memAuthor;
     }
 }
