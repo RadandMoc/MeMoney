@@ -1,11 +1,12 @@
-﻿namespace MeMoney.DBases
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MeMoney.DBases
 {
     public class Mem
     {
-        int IdMem;
-        string MemLink;
 
-        public int IdMem1 { get => IdMem; set => IdMem = value; }
-        public string MemLink1 { get => MemLink; set => MemLink = value; }
+        [Key]
+        public int IdMem { get ; set; }
+        public string MemLink { get; set; }
     }
 }

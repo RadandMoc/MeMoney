@@ -1,9 +1,11 @@
-﻿namespace MeMoney.DBases
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MeMoney.DBases
 {
     public class Offer
     {
-        
 
+        [Key]
         public int Id { get; set; }
         public Company Company { get; set; }
         public decimal BasicSalary { get; set; }
@@ -14,6 +16,8 @@
         public string AdditionalCondition { get; set ; }
         public bool IfPaid { get; set; }
         public decimal MaximalSalary1 { get; set; }
+
+
 
 
 
