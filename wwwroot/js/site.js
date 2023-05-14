@@ -24,3 +24,15 @@ $(document).ready(function () {
         window.location.href = "SetOffer";
     });
 });
+
+function minimalnaOdleglosc() {
+    const divs = document.getElementsByClassName("memesy");
+    let minOdleglosc = window.innerHeight;
+    for (let i = 0; i < divs.length; i++) {
+        const odleglosc = divs[i].getBoundingClientRect().bottom - window.innerHeight;
+        if (odleglosc < minOdleglosc) {
+            minOdleglosc = odleglosc;
+        }
+    }
+    return minOdleglosc;
+}
