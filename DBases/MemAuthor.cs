@@ -11,5 +11,8 @@ namespace MeMoney.DBases
         public string Imie { get; set; }
         public string Nazwisko { get; set ; }
         public string BankAccountNumber { get ; set; }
+
+        public ICollection<OfferMemAuthor> OffersMemAuthor { get; set; }
+
     }
 }
