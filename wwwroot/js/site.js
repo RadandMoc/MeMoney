@@ -12,3 +12,15 @@ $(document).ready(function () {
         }, 500);
     });
 });
+
+$(document).ready(function () {
+    $(".skokDoOfert").click(function () {
+        window.location.href = "ViewOffers";
+    });
+});
+
+$(document).ready(function () {
+    $(".skokDoZrobieniaOfert").click(function () {
+        window.location.href = "SetOffer";
+    });
+});

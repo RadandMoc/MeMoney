@@ -21,6 +21,53 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    animation-name: appear;
+    animation-duration: 2s;
+}
+
+.logo:hover {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation-name: rotate;
+    animation-duration: 2s;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.nav-link:hover {
+    color: #fff;
+    animation-name: bold;
+    animation-duration: 0.15s;
+    font-weight: bold;
+}
+
+@keyframes bold {
+    from {
+        font-weight: normal;
+    }
+
+    to {
+        font-weight: bold;
+    }
 }
 
 .prawica {
@@ -49,6 +96,46 @@ body {
     animation-name: changeColor;
     animation-duration: 24s;
     animation-iteration-count: infinite;
+}
+
+.offer:hover {
+    width: 140px;
+    height: 70px;
+    animation-name: changeColor,grow120\60\140\70;
+    animation-duration: 24s,1.5s;
+    animation-iteration-count: infinite,1;
+}
+
+.offer:not(hover) {
+    width: 120px;
+    height: 60px;
+    animation-name: changeColor,decrease140\70\120\60;
+    animation-duration: 24s,1.5s;
+    animation-iteration-count: infinite,1;
+}
+
+@keyframes decrease140\70\120\60 {
+    from {
+        width: 140px;
+        height: 70px;
+    }
+
+    to {
+        width: 120px;
+        height: 60px;
+    }
+}
+
+@keyframes grow120\60\140\70 {
+    from {
+        width: 120px;
+        height: 60px;
+    }
+
+    to {
+        width: 140px;
+        height: 70px;
+    }
 }
 
 .otoczka {
@@ -131,5 +218,22 @@ body {
 @media screen and (max-width: 800px) {
     .side-menu-container {
         display: none;
+    }
+}
+
+.scroll:hover {
+    width: 100px;
+    animation-name: changeWidth50\100;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes changeWidth50\100 {
+    from {
+        width:50px;
+    }
+
+    to {
+        width:100px;
     }
 }
