@@ -28,6 +28,13 @@ $(document).ready(function () {
         window.location.href = "SetOffer";
     });
 });
+
+$(document).ready(function () {
+    $(".skokDoOfert").click(function () {
+        window.location.href = "ViewOffers";
+    });
+});
+
 /*
 function minimalnaOdleglosc() {
     const divs = document.getElementsByClassName("memesy");
