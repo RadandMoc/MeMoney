@@ -5,17 +5,22 @@
 }
 <div class="text-center darkmode">
     <nav class="side-menu side-menu-container">
-        <a class="scroll" href="#top">
+        <a class="scroll scroll1" href="#top">
             <div>
                 <i class="fa-solid fa-house"></i>
             </div>
         </a>
-        <a class="scroll" href="#offers">
+        <a class="scroll" asp-area="" asp-page="/ViewOffers">
             <div>
-                <i class="fa-solid fa-info"></i>
+                <i class="fa-solid fa-hand-holding-dollar"></i>
             </div>
         </a>
-        <a class="scroll" href="#mems">
+        <a class="scroll" asp-area="" asp-page="/SetOffer">
+            <div>
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+            </div>
+        </a>
+        <a class="scroll scroll1" href="#mems">
             <div>
                 <i class="fa-solid fa-user-graduate"></i>
             </div>
@@ -36,13 +41,13 @@
     </div>
     <h2>Strefa analityków memowych:</h2>
     <div class="teniefajne" id="mems">
-        <div class="lewica memesy">
+        <div class="lewica memesy" id="leweMemy">
             <img class="mem" src="https://ukontentowani.pl/wp-content/uploads/2020/11/uk-popularne-memy-1024x768.jpg" alt="" />
             <img class="mem" src="https://static.korso.pl/galleries/2848a29d-0c62-4de3-bb51-f841912831d6" alt="" />
             <img class="mem" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS81QFYtwn-C0sk3pG6opx8pAg8-ZUnX-fXPLDlk7us9WEhO1FtPClMYW5bn3pI_92Lls8&usqp=CAU" alt="" />
             <img class="mem" src="https://img.styl.fm/resize/c400x240/newsy/wp-content/uploads/2023/05/krol-karol-iii-memy-12.jpg" alt="" />
         </div>
-        <div class="prawica memesy">
+        <div class="prawica memesy" id="praweMemy">
             <img class="mem" src="https://d-art.ppstatic.pl/kadry/k/r/1/f9/70/6014475709791_o_medium.jpg" alt="" />
             <img class="mem" src="https://d-art.ppstatic.pl/kadry/k/r/1/1a/8b/61c970773f5ea_o_full.jpg" alt="" />
             <img class="mem" src="https://ocdn.eu/pulscms-transforms/1/ezWk9kuTURBXy85MWEzMTk2Ny00ZWEwLTQzYTgtOTRkMC1jM2JjMGMzNTllNjkuanBlZ5GTBc0DDM0BaN4AAaEwBQ" alt="" />

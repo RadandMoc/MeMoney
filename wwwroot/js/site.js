@@ -4,7 +4,7 @@
 // Write your JavaScript code.
 
 $(document).ready(function () {
-    $(".scroll").click(function (event) {
+    $(".scroll1").click(function (event) {
         event.preventDefault();
         var target = $(this.hash);
         $('html, body').animate({
@@ -14,8 +14,12 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $(".skokDoOfert").click(function () {
-        window.location.href = "ViewOffers";
+    let elements = document.querySelectorAll('.klasa');
+    elements.forEach(function (element) {
+        element.addEventListener('mouseleave', function (event) {
+            element.style.transition = 'width 1s';
+            element.style.width = '50px';
+        });
     });
 });
 
@@ -24,7 +28,7 @@ $(document).ready(function () {
         window.location.href = "SetOffer";
     });
 });
-
+/*
 function minimalnaOdleglosc() {
     const divs = document.getElementsByClassName("memesy");
     let minOdleglosc = window.innerHeight;
@@ -36,3 +40,35 @@ function minimalnaOdleglosc() {
     }
     return minOdleglosc;
 }
+
+function getShortestMemesyId() {
+    let memesy = document.getElementsByClassName("memesy");
+    let shortestMemesyId = memesy[0].id;
+    for (let i = 1; i < memesy.length; i++) {
+        if (memesy[i].id.length < shortestMemesyId.length) {
+            shortestMemesyId = memesy[i].id;
+        }
+    }
+    return shortestMemesyId;
+}
+
+var nextString ="https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/347133997_150714007974615_3551393103343863070_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=730e14&_nc_ohc=h8k5cduchN4AX9zXgMK&_nc_ht=scontent-vie1-1.xx&oh=00_AfC_cdfaARvnBpEfN0gQE2q8uJDhOY6EJYUWJS_FgWCLDw&oe=6468AF1A"
+
+let intervalId = setInterval(function () {
+    console.log(document.getElementsByClassName("memesy"));
+    console.log(getShortestMemesyId());
+    console.log(minimalnaOdleglosc());
+    console.log(nextString);
+    let memesy = document.getElementsByClassName("memesy");
+    if (memesy.length > 0) {
+        clearInterval(intervalId);
+        if (minimalnaOdleglosc() <= 50) {
+            let id = getShortestMemesyId();
+            let img = document.createElement("img");
+            img.src = nextString;
+            img.alt = "";
+            document.getElementById(id).appendChild(img);
+        }
+    }
+}, 1000);
+*/
