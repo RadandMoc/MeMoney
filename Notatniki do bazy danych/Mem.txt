@@ -1,0 +1,11 @@
+SET IDENTITY_INSERT [dbo].[Mem] ON
+INSERT INTO [dbo].[Mem] ([IdMem], [MemLink]) VALUES (0, N'https://scontent-vie1-1.xx.fbcdn.net/v/t39.30808-6/347133997_150714007974615_3551393103343863070_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=730e14&_nc_ohc=h8k5cduchN4AX9zXgMK&_nc_ht=scontent-vie1-1.xx&oh=00_AfC_cdfaARvnBpEfN0gQE2q8uJDhOY6EJYUWJS_FgWCLDw&oe=6468AF1A')
+INSERT INTO [dbo].[Mem] ([IdMem], [MemLink]) VALUES (1, N'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7CviGi4a3aN4VehLzZhZzXWTxO6eL_Kn1EdkC5Jd3-Fr6Bf_CUwJ8TUtn8R8vR1WEC5g&usqp=CAU')
+INSERT INTO [dbo].[Mem] ([IdMem], [MemLink]) VALUES (2, N'https://ocdn.eu/pulscms-transforms/1/ezWk9kuTURBXy85MWEzMTk2Ny00ZWEwLTQzYTgtOTRkMC1jM2JjMGMzNTllNjkuanBlZ5GTBc0DDM0BaN4AAaEwBQ')
+INSERT INTO [dbo].[Mem] ([IdMem], [MemLink]) VALUES (3, N'https://img.styl.fm/resize/c400x240/newsy/wp-content/uploads/2023/05/krol-karol-iii-memy-12.jpg')
+INSERT INTO [dbo].[Mem] ([IdMem], [MemLink]) VALUES (4, N'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS81QFYtwn-C0sk3pG6opx8pAg8-ZUnX-fXPLDlk7us9WEhO1FtPClMYW5bn3pI_92Lls8&usqp=CAU')
+INSERT INTO [dbo].[Mem] ([IdMem], [MemLink]) VALUES (5, N'https://d-art.ppstatic.pl/kadry/k/r/1/1a/8b/61c970773f5ea_o_full.jpg')
+INSERT INTO [dbo].[Mem] ([IdMem], [MemLink]) VALUES (6, N'https://static.korso.pl/galleries/2848a29d-0c62-4de3-bb51-f841912831d6')
+INSERT INTO [dbo].[Mem] ([IdMem], [MemLink]) VALUES (7, N'https://d-art.ppstatic.pl/kadry/k/r/1/f9/70/6014475709791_o_medium.jpg')
+INSERT INTO [dbo].[Mem] ([IdMem], [MemLink]) VALUES (8, N'https://d-art.ppstatic.pl/kadry/k/r/1/b0/27/63a0bba3b26e0_o_large.jpg')
+SET IDENTITY_INSERT [dbo].[Mem] OFF
