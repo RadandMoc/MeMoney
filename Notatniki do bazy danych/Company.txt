@@ -1,0 +1,5 @@
+SET IDENTITY_INSERT [dbo].[Company] ON
+INSERT INTO [dbo].[Company] ([IdCompany1], [CompanyName1], [Person1], [NIP1], [KRS1]) VALUES (0, 'Inpost', 'Rafal Brzoska', 01050, 951565)
+INSERT INTO [dbo].[Company] ([IdCompany1], [CompanyName1], [Person1], [NIP1], [KRS1]) VALUES (1, 'Prawo i Sprawiedliwość', 'Jarosław Kaczyński', 2107, 398123)
+INSERT INTO [dbo].[Company] ([IdCompany1], [CompanyName1], [Person1], [NIP1], [KRS1]) VALUES (2, 'Koalicja Obywatelska', 'Donald Tusk', 90123, 123456)
+SET IDENTITY_INSERT [dbo].[Company] OFF

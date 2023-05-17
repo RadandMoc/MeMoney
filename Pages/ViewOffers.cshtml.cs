@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace MeMoney.Pages
 {
@@ -22,52 +23,27 @@ namespace MeMoney.Pages
         public DateTime deadline;
         public void OnGet()
         {
+            string query;
+            SqlCommand cmd;
+            SqlDataReader reader;
             con = new SqlConnection(connetionString);
-            Start(loadDatabase);
-            string query = $"SELECT IfPaid FROM Offer WHERE Id={idOfOffer}";
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            con.Open();
+            query = "SELECT COUNT(*) FROM Offer";
+            cmd = new SqlCommand(query, con);
+            reader = cmd.ExecuteReader();
+            if (loadDatabase)
             {
-                if(reader.GetBoolean(reader.GetOrdinal("IfPaid")))
+                loadDatabase = false;
+                if (reader.Read())
                 {
-                    query = $"SELECT CompanyIdCompany1 FROM Offer WHERE Id={idOfOffer}";
-                    cmd = new SqlCommand(query, con);
-                    reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        idCompanyOffer = reader.GetInt32(0);
-                    }
-                    query = $"SELECT CompanyName1, NIP1 FROM Company WHERE IdCompany1={idCompanyOffer}";
-                    cmd = new SqlCommand(query, con);
-                    reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        if (!reader.IsDBNull(reader.GetOrdinal("CompanyName1")))
-                            companyName = reader["CompanyName1"].ToString();
-                        else
-                            companyName = "Not added";
-                        if (!reader.IsDBNull(reader.GetOrdinal("NIP1")))
-                            companyNIP = reader["NIP1"].ToString();
-                        else
-                            companyNIP = "Not added";
-                    }
-                    query = $"SELECT BasicSalary, AdditionalSalary, ValidUntil, Condition, AdditionalCondition, MaximalSalary1 FROM Offer WHERE Id={idOfOffer}";
-                    cmd = new SqlCommand(query, con);
-                    reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        basicPayment = (decimal)reader["BasicSalary"];
-                        bonusPayment = (decimal)reader["AdditionalSalary"];
-                        residualIncome = (decimal)reader["MaximalSalary1"];
-                        requirement = reader["Condition"].ToString();
-                        additionalRequirement = reader["AdditionalCondition"].ToString();
-                        deadline = (DateTime)reader["ValidUntil"];
-                    }
+                    idOfOffer = reader.GetInt32(0);
                 }
             }
-            idOfOffer--;
             reader.Close();
+            //Start(loadDatabase);
+            if (Wielorazowka() == "false")
+                idOfOffer++;
+            con.Close();
         }
 
         public void Start(bool wykonywacz)
@@ -84,7 +60,66 @@ namespace MeMoney.Pages
                     idOfOffer = reader.GetInt32(0);
                 }
                 reader.Close();
+                con.Close();
             }
+        }
+
+        public string Wielorazowka()
+        {
+            idOfOffer--;
+            string query;
+            SqlCommand cmd;
+            SqlDataReader reader;
+            con = new SqlConnection(connetionString);
+            con.Open();
+            query = $"SELECT IfPaid FROM Offer WHERE Id={idOfOffer}";
+            cmd = new SqlCommand(query, con);
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                if (reader.GetBoolean(reader.GetOrdinal("IfPaid")))
+                {
+                    reader.Close();
+                    query = $"SELECT CompanyIdCompany1 FROM Offer WHERE Id={idOfOffer}";
+                    cmd = new SqlCommand(query, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        idCompanyOffer = reader.GetInt32(0);
+                    }
+                    reader.Close();
+                    query = $"SELECT CompanyName1, NIP1 FROM Company WHERE IdCompany1={idCompanyOffer}";
+                    cmd = new SqlCommand(query, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        if (!reader.IsDBNull(reader.GetOrdinal("CompanyName1")))
+                            companyName = reader["CompanyName1"].ToString();
+                        else
+                            companyName = "Not added";
+                        if (!reader.IsDBNull(reader.GetOrdinal("NIP1")))
+                            companyNIP = reader["NIP1"].ToString();
+                        else
+                            companyNIP = "Not added";
+                    }
+                    reader.Close();
+                    query = $"SELECT BasicSalary, AdditionalSalary, ValidUntil, Condition, AdditionalCondition, MaximalSalary1 FROM Offer WHERE Id={idOfOffer}";
+                    cmd = new SqlCommand(query, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        basicPayment = (decimal)reader["BasicSalary"];
+                        bonusPayment = (decimal)reader["AdditionalSalary"];
+                        residualIncome = (decimal)reader["MaximalSalary1"];
+                        requirement = reader["Condition"].ToString();
+                        additionalRequirement = reader["AdditionalCondition"].ToString();
+                        deadline = (DateTime)reader["ValidUntil"];
+                    }
+                }
+            }
+            reader.Close();
+            con.Close();
+            return "";
         }
     }
 }

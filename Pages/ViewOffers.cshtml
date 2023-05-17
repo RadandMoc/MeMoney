@@ -18,7 +18,36 @@
 
 <div class="OffersContainer">
     <div class="OfferBox">
-        <a>Nazwa Firmy: @Model.companyName</a>
+        <h4>Nazwa Firmy: @Model.companyName</h4>
+        <p>NIP: @Model.companyNIP</p>
+        <p>Pozostała kwota: @Model.residualIncome</p>
+        <p>Oferta jest aktualna dla memów które spełnią warunki <strong>przed @Model.deadline.ToString()</strong></p>
+        <div class="teniefajne">
+            <div class="lewica centrowanaTresc">
+                <p>Warunki podstawowe: <br />@Model.requirement</p>
+                <p>Wynagrodzenie: @Model.basicPayment zł</p>
+            </div>
+            <div class="prawica centrowanaTresc">
+                <p>Warunki Dodatkowe: <br/>@Model.additionalRequirement</p>
+                <p>Premia: @Model.bonusPayment zł</p>
+            </div>
+        </div>
+    </div>
+    <div class="OfferBox">
+        <h4>@Model.Wielorazowka()Nazwa Firmy: @Model.companyName</h4>
+        <p>NIP: @Model.companyNIP</p>
+        <p>Pozostała kwota: @Model.residualIncome</p>
+        <p>Oferta jest aktualna dla memów które spełnią warunki <strong>przed @Model.deadline.ToString()</strong></p>
+        <div class="teniefajne">
+            <div class="lewica centrowanaTresc">
+                <p>Warunki podstawowe: <br />@Model.requirement</p>
+                <p>Wynagrodzenie: @Model.basicPayment zł</p>
+            </div>
+            <div class="prawica centrowanaTresc">
+                <p>Warunki Dodatkowe: <br />@Model.additionalRequirement</p>
+                <p>Premia: @Model.bonusPayment zł</p>
+            </div>
+        </div>
     </div>
 </div>
 
