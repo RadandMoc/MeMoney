@@ -36,6 +36,15 @@ $(document).ready(function () {
 });
 
 /*
+//Klonowanie obiektu o konkretnym id
+$(document).ready(function () {
+    const kopiowacz = document.getElementById('kopiowacz');
+    const klon = kopiowacz.cloneNode(true);
+    const offersContainer = document.querySelector('.OffersContainer');
+    offersContainer.appendChild(klon);
+})*/
+
+/*
 function minimalnaOdleglosc() {
     const divs = document.getElementsByClassName("memesy");
     let minOdleglosc = window.innerHeight;
