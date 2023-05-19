@@ -38,9 +38,8 @@
             </div>
         </div>
     </div>
-    @while(Model.idOfOffer > 0 && Model.startOfferts<2)
+    @while(Model.idOfOffer > 0 )
     {
         <partial name="_BoxOfOffert" />
     }
-    @await Html.PartialAsync("_AfterLoadOffers")
 </div>
