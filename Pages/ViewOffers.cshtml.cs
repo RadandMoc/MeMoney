@@ -23,6 +23,8 @@ namespace MeMoney.Pages
         public string additionalRequirement ="";
         public DateTime deadline;
         public bool isOffer = false;
+        public int startOfferts = 0;
+
         public void OnGet()
         {
             string query;
@@ -135,6 +137,13 @@ namespace MeMoney.Pages
                 reader.Close();
                 con.Close();
             }
+            return "";
+        }
+
+        //public IActionResult OnGetPartial() => Partial("_OfferBox");
+        public string AddOneToStartOffer()
+        {
+            startOfferts++;
             return "";
         }
 

@@ -1,6 +1,7 @@
 using MeMoney.DBases;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.JSInterop;
 
 var builder = WebApplication.CreateBuilder(args);
 

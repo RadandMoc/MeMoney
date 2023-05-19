@@ -35,6 +35,29 @@ $(document).ready(function () {
     });
 });
 
+//Teoretycznie wprowadza partial view do obiektu klasy OfferBox
+/*window.addEventListener('load', function () {
+    const OffersContainer = document.querySelector('.OffersContainer');
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '_BoxOfOffert', true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            OffersContainer.innerHTML = xhr.responseText;
+        }
+    };
+    xhr.send();
+});*/
+/*window.addEventListener('load', function () {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('offerBoxesContainer').innerHTML = this.responseText;
+        }
+    };
+    xhr.open('GET', '_BoxOfOffert', true);
+    xhr.send();
+});*/
+
 /*
 //Klonowanie obiektu o konkretnym id
 $(document).ready(function () {
