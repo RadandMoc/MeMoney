@@ -26,12 +26,12 @@ body {
     transition: transform 2s;
 }
 
-.logo:hover {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    transform: rotate(360deg);
-}
+    .logo:hover {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transform: rotate(360deg);
+    }
 
 #hamskoWymusze:hover {
     color: #fff;
@@ -96,21 +96,21 @@ body {
     animation-iteration-count: infinite;
 }
 
-.offer:hover {
-    width: 140px;
-    height: 70px;
-    animation-name: changeColor,grow120\60\140\70;
-    animation-duration: 24s,1.5s;
-    animation-iteration-count: infinite,1;
-}
+    .offer:hover {
+        width: 140px;
+        height: 70px;
+        animation-name: changeColor,grow120\60\140\70;
+        animation-duration: 24s,1.5s;
+        animation-iteration-count: infinite,1;
+    }
 
-.offer:not(hover) {
-    width: 120px;
-    height: 60px;
-    animation-name: changeColor,decrease140\70\120\60;
-    animation-duration: 24s,1.5s;
-    animation-iteration-count: infinite,1;
-}
+    .offer:not(hover) {
+        width: 120px;
+        height: 60px;
+        animation-name: changeColor,decrease140\70\120\60;
+        animation-duration: 24s,1.5s;
+        animation-iteration-count: infinite,1;
+    }
 
 @keyframes decrease140\70\120\60 {
     from {
@@ -194,28 +194,28 @@ body {
     transform: translateY(-50%);
 }
 
-.side-menu a {
-    display: block;
-    width: 50px;
-    transition: width 2s;
-    height: 50px;
-    margin-bottom: 20px;
-}
+    .side-menu a {
+        display: block;
+        width: 50px;
+        transition: width 2s;
+        height: 50px;
+        margin-bottom: 20px;
+    }
 
-.side-menu a div {
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        .side-menu a div {
+            width: 100%;
+            height: 100%;
+            border-radius: 25px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.side-menu a div i {
-    color: black;
-    font-size: 2em;
-}
+            .side-menu a div i {
+                color: black;
+                font-size: 2em;
+            }
 
 @media screen and (max-width: 760px) {
     .side-menu-container {
@@ -269,14 +269,14 @@ body {
     transition: transform 2s;
 }
 
-#rightLogo:hover img {
-    transform: rotate(360deg);
-    animation-duration: 2s;
-}
+    #rightLogo:hover img {
+        transform: rotate(360deg);
+        animation-duration: 2s;
+    }
 
-#rightLogo img {
-    animation: none;
-}
+    #rightLogo img {
+        animation: none;
+    }
 
 .set-offer-box {
     background-color: white;
@@ -301,16 +301,16 @@ body {
     border-radius: 25px;
 }
 
-.see-memes img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    transition: all 2s;
-}
+    .see-memes img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        transition: all 2s;
+    }
 
-.see-memes img:hover {
-    width: 80px;
-    height: 80px;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-}
+        .see-memes img:hover {
+            width: 80px;
+            height: 80px;
+            animation-duration: 2s;
+            animation-iteration-count: 1;
+        }
