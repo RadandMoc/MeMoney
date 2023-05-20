@@ -53,10 +53,12 @@ namespace MeMoney.Controler
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BasicSalary,AdditionalSalary,ValidFrom,ValidUntil,Condition,AdditionalCondition,IfPaid,MaximalSalary1")] Offer offer)
+        public async Task<IActionResult> Create([Bind("Id,CompanyField,BasicSalary,AdditionalSalary,ValidFrom,ValidUntil,Condition,AdditionalCondition,IfPaid,MaximalSalary1")] Offer offer)
         {
-            int id = Int32.Parse(HttpContext.Request.Form["CompanyId"]);
-            offer.Company = _context.Company.Find(id);
+
+            //int id = Int32.Parse(HttpContext.Request.Form["Company"]);
+            offer.Company = _context.Company.Find(1);
+            //offer.Company = 1;
             if (ModelState.IsValid)
             {
  
@@ -65,17 +67,16 @@ namespace MeMoney.Controler
                 return RedirectToAction(nameof(Index));
 
             }
-            else 
+            else
             {
-                foreach (var modelState in ViewData.ModelState.Values)
+                // Debugging: print out the validation errors
+                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(p => p.ErrorMessage)).ToList();
+                foreach (var error in errors)
                 {
-                    foreach (var error in modelState.Errors)
-                    {
-                        Console.WriteLine(error.ErrorMessage);
-                    }
+                    Console.WriteLine(error);
                 }
             }
-            return View(offer);
+            return null;
         }
 
         // GET: Offers/Edit/5

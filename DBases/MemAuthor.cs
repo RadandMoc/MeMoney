@@ -12,7 +12,7 @@ namespace MeMoney.DBases
         public string Nazwisko { get; set ; }
         public string BankAccountNumber { get ; set; }
 
-        public ICollection<OfferMemAuthor> OffersMemAuthor { get; set; }
+        public ICollection<OfferMemAuthor> ?OffersMemAuthor { get; set; }
 
         public MemAuthor() 
         {

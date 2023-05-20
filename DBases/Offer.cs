@@ -16,8 +16,8 @@ namespace MeMoney.DBases
         public string AdditionalCondition { get; set ; }
         public bool IfPaid { get; set; }
         public decimal MaximalSalary1 { get; set; }
-        public ICollection<OfferMem> MemOffers { get; set; }
-        public ICollection<OfferMemAuthor> OffersMemAuthor { get; set; }
+        public ICollection<OfferMem> ?MemOffers { get; set; }
+        public ICollection<OfferMemAuthor> ?OffersMemAuthor { get; set; }
 
 
         public Offer() 

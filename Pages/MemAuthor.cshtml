@@ -21,23 +21,24 @@
 
 
     <h1>Stwórz nowego autora</h1>
-    <form asp-controller="MemAuthors" asp-action="Add" method="post">
+    <form asp-controller="MemAuthors" asp-action="Create" method="post">
         <table>
+           
             <tr>
-                <td>Nick Name :</td>
-                <td><input name="NickName" type="text" asp-for="NickName" /></td>
+                <td>NickName :</td>
+                <td><input name="NickName" type="text" /></td>
             </tr>
             <tr>
                 <td>Imie :</td>
-                <td><input name="Imie" type="text" asp-for="Imie"/></td>
+                <td><input name="Imie" type="text" /></td>
             </tr>
             <tr>
                 <td>Nazwisko :</td>
-                <td><input name="Nazwisko" type="text" asp-for="Nazwisko"/></td>
+                <td><input name="Nazwisko" type="text" /></td>
             </tr>
             <tr>
-                <td>Bank Account Number :</td>
-                <td><input name="BankAccountNumber" type="text" asp-for="BankAccountNumber" /></td>
+                <td>BankAccountNumber :</td>
+                <td><input name="BankAccountNumber" type="text"  /></td>
             </tr>
             <tr>
                 <td colspan="2">
