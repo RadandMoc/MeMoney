@@ -1,0 +1,54 @@
+﻿@page
+@model MeMoney.Pages.MemAuthorModel
+@{
+}
+<div class="text-center darkmode">
+    <nav class="side-menu side-menu-container">
+        <a class="scroll" asp-area="" asp-page="/SetOffer">
+            <div>
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+            </div>
+        </a>
+        <a class="scroll" asp-area="" asp-page="/Index">
+            <div id="rightLogo">
+                <img src="~/Images/MeMoneyLogo.png" alt="MeMoney" class="logo" />
+            </div>
+        </a>
+    </nav>
+    <div class="center-box">
+    </div>
+</div>
+
+<div>
+    <h1>Stwórz nowego autora</h1>
+    <form asp-controller="MemAuthorsController" method="post" asp-action="Add">
+        <input name="__RequestVerificationToken" type="hidden" value="" /> <!-- To jest wymagane dla [ValidateAntiForgeryToken] -->
+        <table>
+            <tr>
+                <td>Nick Name :</td>
+                <td><input name="NickName" type="text" asp-for="Name" /></td>
+            </tr>
+            <tr>
+                <td>Imie :</td>
+                <td><input name="Imie" type="text" asp-for="Imie"/></td>
+            </tr>
+            <tr>
+                <td>Nazwisko :</td>
+                <td><input name="Nazwisko" type="text" asp-for="Nazwisko"/></td>
+            </tr>
+            <tr>
+                <td>Bank Account Number :</td>
+                <td><input name="BankAccountNumber" type="text" asp-for="BankAccountNumber" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input id="Submit1" type="submit" value="submit" /></td>
+            </tr>
+        </table>
+    </form>
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
+
+
+
+
+

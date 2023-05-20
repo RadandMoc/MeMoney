@@ -6,102 +6,90 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MeMoney.DBases;
-using System.Runtime.CompilerServices;
 
 namespace MeMoney.Controler
 {
-    public class OffersController : Controller
+    public class MemsController : Controller
     {
         private readonly MyDbContext _context;
 
-        public OffersController(MyDbContext context)
+        public MemsController(MyDbContext context)
         {
             _context = context;
         }
 
-        // GET: Offers
+        // GET: Mems
         public async Task<IActionResult> Index()
         {
-              return _context.Offer != null ? 
-                          View(await _context.Offer.ToListAsync()) :
-                          Problem("Entity set 'MyDbContext.Offer'  is null.");
+              return _context.Mem != null ? 
+                          View(await _context.Mem.ToListAsync()) :
+                          Problem("Entity set 'MyDbContext.Mem'  is null.");
         }
 
-        // GET: Offers/Details/5
+        // GET: Mems/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Offer == null)
+            if (id == null || _context.Mem == null)
             {
                 return NotFound();
             }
 
-            var offer = await _context.Offer
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (offer == null)
+            var mem = await _context.Mem
+                .FirstOrDefaultAsync(m => m.IdMem == id);
+            if (mem == null)
             {
                 return NotFound();
             }
 
-            return View(offer);
+            return View(mem);
         }
 
-        // GET: Offers/Create
- 
+        // GET: Mems/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-        // POST: Offers/Create
+        // POST: Mems/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BasicSalary,AdditionalSalary,ValidFrom,ValidUntil,Condition,AdditionalCondition,IfPaid,MaximalSalary1")] Offer offer)
+        public async Task<IActionResult> Create([Bind("IdMem,MemLink")] Mem mem)
         {
-            int id = Int32.Parse(HttpContext.Request.Form["CompanyId"]);
-            offer.Company = _context.Company.Find(id);
             if (ModelState.IsValid)
             {
- 
-                _context.Add(offer);
+                _context.Add(mem);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-
             }
-            else 
-            {
-                foreach (var modelState in ViewData.ModelState.Values)
-                {
-                    foreach (var error in modelState.Errors)
-                    {
-                        Console.WriteLine(error.ErrorMessage);
-                    }
-                }
-            }
-            return View(offer);
+            return View(mem);
         }
 
-        // GET: Offers/Edit/5
+        // GET: Mems/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Offer == null)
+            if (id == null || _context.Mem == null)
             {
                 return NotFound();
             }
 
-            var offer = await _context.Offer.FindAsync(id);
-            if (offer == null)
+            var mem = await _context.Mem.FindAsync(id);
+            if (mem == null)
             {
                 return NotFound();
             }
-            return View(offer);
+            return View(mem);
         }
 
-        // POST: Offers/Edit/5
+        // POST: Mems/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,BasicSalary,AdditionalSalary,ValidFrom,ValidUntil,Condition,AdditionalCondition,IfPaid,MaximalSalary1")] Offer offer)
+        public async Task<IActionResult> Edit(int id, [Bind("IdMem,MemLink")] Mem mem)
         {
-            if (id != offer.Id)
+            if (id != mem.IdMem)
             {
                 return NotFound();
             }
@@ -110,12 +98,12 @@ namespace MeMoney.Controler
             {
                 try
                 {
-                    _context.Update(offer);
+                    _context.Update(mem);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OfferExists(offer.Id))
+                    if (!MemExists(mem.IdMem))
                     {
                         return NotFound();
                     }
@@ -126,53 +114,49 @@ namespace MeMoney.Controler
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(offer);
+            return View(mem);
         }
 
-        // GET: Offers/Delete/5
+        // GET: Mems/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Offer == null)
+            if (id == null || _context.Mem == null)
             {
                 return NotFound();
             }
 
-            var offer = await _context.Offer
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (offer == null)
+            var mem = await _context.Mem
+                .FirstOrDefaultAsync(m => m.IdMem == id);
+            if (mem == null)
             {
                 return NotFound();
             }
 
-            return View(offer);
+            return View(mem);
         }
 
-        // POST: Offers/Delete/5
+        // POST: Mems/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Offer == null)
+            if (_context.Mem == null)
             {
-                return Problem("Entity set 'MyDbContext.Offer'  is null.");
+                return Problem("Entity set 'MyDbContext.Mem'  is null.");
             }
-            var offer = await _context.Offer.FindAsync(id);
-            if (offer != null)
+            var mem = await _context.Mem.FindAsync(id);
+            if (mem != null)
             {
-                _context.Offer.Remove(offer);
+                _context.Mem.Remove(mem);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OfferExists(int id)
+        private bool MemExists(int id)
         {
-          return (_context.Offer?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Mem?.Any(e => e.IdMem == id)).GetValueOrDefault();
         }
-
-
-        
-
     }
 }

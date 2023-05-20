@@ -14,5 +14,10 @@ namespace MeMoney.DBases
 
         public ICollection<OfferMemAuthor> OffersMemAuthor { get; set; }
 
+        public MemAuthor() 
+        {
+
+        }
+
     }
 }

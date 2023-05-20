@@ -22,7 +22,6 @@ namespace MeMoney.DBases
 
         public Offer() 
         {
-            Id= 0;
         }
 
     }

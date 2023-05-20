@@ -18,11 +18,11 @@
     </nav>
     <div class="set-offer-box">
         <h1>Stwórz ofertę</h1>
-        <form asp-controller="OffersController" asp-action="Create" method="post">
+        <form asp-controller="Offer" asp-action="Create" method="post">
             <input name="__RequestVerificationToken" type="hidden" value="" /> <!-- To jest wymagane dla [ValidateAntiForgeryToken] -->
             <table>
                 <tr>
-                    <td>Id :</td>
+                    <td>CompanyId :</td>
                     <td><input name="Company" type="number" /></td>
                 </tr>
                 <tr>
@@ -65,5 +65,6 @@
 
         <div asp-validation-summary="All" class="text-danger"></div>
     </div>
+
 
 </div>

@@ -17,6 +17,8 @@ namespace MeMoney.DBases
         public DbSet<OfferMemAuthor> OfferMemAuthor { get; set; }
 
 
+    
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<OfferMem>()
