@@ -1,5 +1,11 @@
 ﻿@page
 @model MeMoney.Pages.ViewMemsForOffertModel
-@{
-    <h1>@Model.OfferId</h1>
-}
+
+<div class="OffersContainer">
+    @for (int i = Model.numOfMems ; i > 0; i--)
+    {
+        <div class="OfferBox">
+            <img src=@Model.LinkOfMem() alt=@i.ToString()/>
+        </div>
+    }
+</div>
