@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.CompanyIdCompany1)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.BasicSalary)
             </th>
             <th>
@@ -42,6 +45,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.CompanyIdCompany1)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BasicSalary)
             </td>

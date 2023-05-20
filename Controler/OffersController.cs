@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MeMoney.DBases;
-using System.Runtime.CompilerServices;
 
 namespace MeMoney.Controler
 {
@@ -46,37 +45,25 @@ namespace MeMoney.Controler
         }
 
         // GET: Offers/Create
- 
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         // POST: Offers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CompanyField,BasicSalary,AdditionalSalary,ValidFrom,ValidUntil,Condition,AdditionalCondition,IfPaid,MaximalSalary1")] Offer offer)
+        public async Task<IActionResult> Create([Bind("Id,IdCompany,BasicSalary,AdditionalSalary,ValidFrom,ValidUntil,Condition,AdditionalCondition,IfPaid,MaximalSalary1")] Offer offer)
         {
-
-            //int id = Int32.Parse(HttpContext.Request.Form["Company"]);
-            offer.Company = _context.Company.Find(1);
-            //offer.Company = 1;
             if (ModelState.IsValid)
             {
- 
                 _context.Add(offer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-
             }
-            else
-            {
-                // Debugging: print out the validation errors
-                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(p => p.ErrorMessage)).ToList();
-                foreach (var error in errors)
-                {
-                    Console.WriteLine(error);
-                }
-            }
-            return null;
+            return View(offer);
         }
 
         // GET: Offers/Edit/5
@@ -100,7 +87,7 @@ namespace MeMoney.Controler
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,BasicSalary,AdditionalSalary,ValidFrom,ValidUntil,Condition,AdditionalCondition,IfPaid,MaximalSalary1")] Offer offer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,IdCompany,BasicSalary,AdditionalSalary,ValidFrom,ValidUntil,Condition,AdditionalCondition,IfPaid,MaximalSalary1")] Offer offer)
         {
             if (id != offer.Id)
             {
@@ -171,9 +158,5 @@ namespace MeMoney.Controler
         {
           return (_context.Offer?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-
-
-        
-
     }
 }

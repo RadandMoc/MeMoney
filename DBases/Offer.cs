@@ -7,7 +7,7 @@ namespace MeMoney.DBases
 
         [Key]
         public int Id { get; set; }
-        public Company Company { get; set; }
+        public int CompanyIdCompany1 { get; set; }
         public decimal BasicSalary { get; set; }
         public decimal AdditionalSalary { get; set; }
         public DateTime ValidFrom { get; set; }

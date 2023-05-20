@@ -35,6 +35,14 @@ namespace MeMoney.DBases
                 .HasForeignKey(mo => mo.OfferId);
 
 
+            modelBuilder.Entity<OfferMemAuthor>()
+                .Property(b => b.IdMemAuthor)
+                .HasColumnOrder(0);
+
+            modelBuilder.Entity<OfferMemAuthor>()
+                .Property(b => b.OfferId)
+                .HasColumnOrder(1);
+
 
             modelBuilder.Entity<OfferMemAuthor>()
                 .HasKey(mo => new { mo.IdMemAuthor, mo.OfferId });
