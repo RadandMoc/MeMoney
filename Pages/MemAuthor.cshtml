@@ -19,14 +19,13 @@
     </div>
 </div>
 
-<div>
+
     <h1>Stwórz nowego autora</h1>
-    <form asp-controller="MemAuthorsController" method="post" asp-action="Add">
-        <input name="__RequestVerificationToken" type="hidden" value="" /> <!-- To jest wymagane dla [ValidateAntiForgeryToken] -->
+    <form asp-controller="MemAuthors" asp-action="Add" method="post">
         <table>
             <tr>
                 <td>Nick Name :</td>
-                <td><input name="NickName" type="text" asp-for="Name" /></td>
+                <td><input name="NickName" type="text" asp-for="NickName" /></td>
             </tr>
             <tr>
                 <td>Imie :</td>
@@ -41,12 +40,13 @@
                 <td><input name="BankAccountNumber" type="text" asp-for="BankAccountNumber" /></td>
             </tr>
             <tr>
-                <td colspan="2"><input id="Submit1" type="submit" value="submit" /></td>
+                <td colspan="2">
+                    <input  id="Submit1" type="submit" value="submit" />
+                </tr>
             </tr>
         </table>
     </form>
     <div asp-validation-summary="All" class="text-danger"></div>
-</div>
 
 
 

@@ -45,23 +45,46 @@ namespace MeMoney.Controler
             return View(memAuthor);
         }
 
+
+
+        [HttpGet]
+ 
         public IActionResult Add() 
         {
             return View();
 
         }
+        
 
         // GET: MemAuthors/Create
+        [HttpPost]
         public async Task<IActionResult> Add(MemAuthorModel addAuthorModel)
         {
-            var memAuthor = new MemAuthor();
-            memAuthor.NickName = addAuthorModel.Name;
-            memAuthor.Imie = addAuthorModel.Imie;
-            memAuthor.BankAccountNumber = addAuthorModel.BankAccountNumber;
-            await _context.MemAuthor.AddAsync(memAuthor);    
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Add");
+            
+                if (ModelState.IsValid)
+                {
+ 
+                    try
+                    {
+                        var memAuthor = new MemAuthor();
+                        memAuthor.NickName = addAuthorModel.NickName;
+                        memAuthor.Imie = addAuthorModel.Imie;
+                        memAuthor.BankAccountNumber = addAuthorModel.BankAccountNumber;
+                        await _context.MemAuthor.AddAsync(memAuthor);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction("Add");
+                    }
+                    catch (Exception ex)
+                    {
+                        // Zaloguj wyjątek
+                        // Możesz także dodać wiadomość do modelu, aby informować użytkownika o błędzie
+                    }
+                }
+            // Model nie jest prawidłowy lub wystąpił błąd - wróć do formularza z tym samym modelem
+            return View(addAuthorModel);
         }
+
+        
 
 
 
@@ -174,6 +197,11 @@ namespace MeMoney.Controler
         private bool MemAuthorExists(int id)
         {
           return (_context.MemAuthor?.Any(e => e.IdMemAuthor == id)).GetValueOrDefault();
+        }
+
+        private void Kot() 
+        {
+            Console.WriteLine("kot");
         }
     }
 }

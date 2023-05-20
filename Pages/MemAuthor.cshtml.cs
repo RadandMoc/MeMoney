@@ -6,8 +6,13 @@ namespace MeMoney.Pages
 {
     public class MemAuthorModel : PageModel
     {
+        private readonly HttpContext _httpContext;
 
-        public string Name { get; set; }    
+        public MemAuthorModel(HttpContext httpContext)
+        {
+            _httpContext = httpContext ?? throw new ArgumentNullException(nameof(httpContext));
+        }
+        public string NickName { get; set; }    
         public string Imie { get; set; }
 
         public string Nazwisko { get; set; }
@@ -15,6 +20,10 @@ namespace MeMoney.Pages
         public string BankAccountNumber { get; set; }
         public void OnGet()
         {
+        }
+        public string debugger()
+        {
+            return "";
         }
     }
 }
