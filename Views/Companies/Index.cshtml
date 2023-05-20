@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MeMoney.DBases.Company>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NIP1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KRS1)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NIP1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KRS1)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdCompany1">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCompany1">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdCompany1">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

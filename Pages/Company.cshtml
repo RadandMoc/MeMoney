@@ -1,0 +1,35 @@
+﻿@page
+@model MeMoney.Pages.CompanyModel
+@{
+}
+
+
+<div class="set-offer-box">
+    <h1>Stwórz ofertę</h1>
+    <form asp-controller="Company" asp-action="Create" method="post">
+        <input name="__RequestVerificationToken" type="hidden" value="" /> <!-- To jest wymagane dla [ValidateAntiForgeryToken] -->
+        <table>
+            <tr>
+                <td>CompanyName :</td>
+                <td><input name="CompanyName1" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Owner :</td>
+                <td><input name="Person1" type="text" /></td>
+            </tr>
+            <tr>
+                <td>NIP :</td>
+                <td><input name="NIP1" type="number" /></td>
+            </tr>
+            <tr>
+                <td>KRS :</td>
+                <td><input name="KRS1" type="number" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input id="Submit1" type="submit" value="submit" /></td>
+            </tr>
+        </table>
+    </form>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+</div>
