@@ -8,5 +8,11 @@ namespace MeMoney.Pages
         public void OnGet()
         {
         }
+
+
+        public void OnPost() 
+        {
+
+        }    
     }
 }

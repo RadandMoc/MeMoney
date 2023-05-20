@@ -62,6 +62,17 @@ namespace MeMoney.Controler
                 _context.Add(offer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+
+            }
+            else 
+            {
+                foreach (var modelState in ViewData.ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        Console.WriteLine(error.ErrorMessage);
+                    }
+                }
             }
             return View(offer);
         }
@@ -160,8 +171,7 @@ namespace MeMoney.Controler
         }
 
 
+        
 
-
-      
     }
 }
