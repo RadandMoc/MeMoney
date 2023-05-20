@@ -37,7 +37,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Regulamin</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" onclick="register()">Zarejestruj się</a>
+                            <a class="nav-link text-dark" id="hamskoWymusze" onclick="register()">Zarejestruj się</a>
                         </li>
                     </ul>
                 </div>
@@ -62,25 +62,5 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 
-
-    <script>
-        function register() {
-            Swal.fire({
-                title: 'Wybierz rolę',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Twórca memów',
-                cancelButtonText: 'Firma'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire('Wybrano Twórcę memów', '', 'success');
-                    window.location.href = '/MemAuthor';
-                } else if (result.dismiss === Swal.DismissReason.cancel) {
-                    Swal.fire('Wybrano Firmę', '', 'success');
-                    window.location.href = '/Company';
-                }
-            });
-        }
-    </script>
 </body>
 </html>

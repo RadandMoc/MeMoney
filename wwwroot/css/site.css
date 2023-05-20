@@ -33,6 +33,14 @@ body {
     transform: rotate(360deg);
 }
 
+#hamskoWymusze:hover {
+    color: #fff;
+    background-color: white;
+    animation-name: bold;
+    animation-duration: 0.15s;
+    font-weight: bold;
+}
+
 @keyframes appear {
     from {
         opacity: 0;

@@ -35,6 +35,24 @@ $(document).ready(function () {
     });
 });
 
+function register() {
+    Swal.fire({
+        title: 'Wybierz rolę',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Twórca memów',
+        cancelButtonText: 'Firma'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire('Wybrano Twórcę memów', '', 'success');
+            window.location.href = '/MemAuthor';
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire('Wybrano Firmę', '', 'success');
+            window.location.href = '/Company';
+        }
+    });
+}
+
 //Teoretycznie wprowadza partial view do obiektu klasy OfferBox
 /*window.addEventListener('load', function () {
     const OffersContainer = document.querySelector('.OffersContainer');
