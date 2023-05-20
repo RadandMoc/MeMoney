@@ -47,16 +47,16 @@
     <h2>Strefa analityków memowych:</h2>
     <div class="teniefajne" id="mems">
         <div class="lewica memesy" id="leweMemy">
-            <img class="mem" src="https://ukontentowani.pl/wp-content/uploads/2020/11/uk-popularne-memy-1024x768.jpg" alt="" />
-            <img class="mem" src="https://static.korso.pl/galleries/2848a29d-0c62-4de3-bb51-f841912831d6" alt="" />
-            <img class="mem" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS81QFYtwn-C0sk3pG6opx8pAg8-ZUnX-fXPLDlk7us9WEhO1FtPClMYW5bn3pI_92Lls8&usqp=CAU" alt="" />
-            <img class="mem" src="https://img.styl.fm/resize/c400x240/newsy/wp-content/uploads/2023/05/krol-karol-iii-memy-12.jpg" alt="" />
+            @for (int i = Model.mems.Count()/2; i > 0; i--)
+            {
+                <img class="mem" src=@Model.GetMemSrc() alt="" />
+            }
         </div>
         <div class="prawica memesy" id="praweMemy">
-            <img class="mem" src="https://d-art.ppstatic.pl/kadry/k/r/1/f9/70/6014475709791_o_medium.jpg" alt="" />
-            <img class="mem" src="https://d-art.ppstatic.pl/kadry/k/r/1/1a/8b/61c970773f5ea_o_full.jpg" alt="" />
-            <img class="mem" src="https://ocdn.eu/pulscms-transforms/1/ezWk9kuTURBXy85MWEzMTk2Ny00ZWEwLTQzYTgtOTRkMC1jM2JjMGMzNTllNjkuanBlZ5GTBc0DDM0BaN4AAaEwBQ" alt="" />
-            <img class="mem" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7CviGi4a3aN4VehLzZhZzXWTxO6eL_Kn1EdkC5Jd3-Fr6Bf_CUwJ8TUtn8R8vR1WEC5g&usqp=CAU" alt="" />
+            @for (int i = Model.mems.Count(); i > 0; i--)
+            {
+                <img class="mem" src=@Model.GetMemSrc() alt="" />
+            }
         </div>
     </div>
 </div>
