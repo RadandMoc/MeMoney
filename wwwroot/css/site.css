@@ -26,12 +26,12 @@ body {
     transition: transform 2s;
 }
 
-    .logo:hover {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        transform: rotate(360deg);
-    }
+.logo:hover {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transform: rotate(360deg);
+}
 
 @keyframes appear {
     from {
@@ -88,21 +88,21 @@ body {
     animation-iteration-count: infinite;
 }
 
-    .offer:hover {
-        width: 140px;
-        height: 70px;
-        animation-name: changeColor,grow120\60\140\70;
-        animation-duration: 24s,1.5s;
-        animation-iteration-count: infinite,1;
-    }
+.offer:hover {
+    width: 140px;
+    height: 70px;
+    animation-name: changeColor,grow120\60\140\70;
+    animation-duration: 24s,1.5s;
+    animation-iteration-count: infinite,1;
+}
 
-    .offer:not(hover) {
-        width: 120px;
-        height: 60px;
-        animation-name: changeColor,decrease140\70\120\60;
-        animation-duration: 24s,1.5s;
-        animation-iteration-count: infinite,1;
-    }
+.offer:not(hover) {
+    width: 120px;
+    height: 60px;
+    animation-name: changeColor,decrease140\70\120\60;
+    animation-duration: 24s,1.5s;
+    animation-iteration-count: infinite,1;
+}
 
 @keyframes decrease140\70\120\60 {
     from {
@@ -237,9 +237,8 @@ body {
 
 .OfferBox {
     background-color: white;
-    max-block-size: 900px;
-    margin-left: 8%;
-    margin-right: 12%;
+    margin-left: 8vw;
+    margin-right: 12vw;
     color: black;
     border-radius: 35px;
     padding: 35px;
@@ -247,7 +246,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 4vw;
+    margin-top: 5vh;
 }
 
 .centrowanaTresc {
@@ -262,11 +261,25 @@ body {
     transition: transform 2s;
 }
 
-    #rightLogo:hover img {
-        transform: rotate(360deg);
-        animation-duration: 2s;
-    }
+#rightLogo:hover img {
+    transform: rotate(360deg);
+    animation-duration: 2s;
+}
 
 #rightLogo img {
     animation: none;
+}
+
+.set-offer-box {
+    background-color: white;
+    margin-left: 8vw;
+    margin-right: 12vw;
+    color: black;
+    border-radius: 35px;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 5vh;
 }

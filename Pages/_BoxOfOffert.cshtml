@@ -1,7 +1,7 @@
 ﻿@model MeMoney.Pages.ViewOffersModel
 
 @Model.Wielorazowka()
-@if (Model.isOffer && Model.idOfOffer >= 0)
+@if (Model.isOffer && Model.idOfOffer >= 0 && Model.residualIncome>0)
 {
 <div class="OfferBox">
     <h4>Nazwa Firmy: @Model.companyName</h4>
