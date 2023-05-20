@@ -1,3 +1,4 @@
+using MeMoney.DBases;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -14,13 +15,13 @@ namespace MeMoney.Pages
         bool loadDatabase = true;
         public int idOfOffer;
         public int idCompanyOffer;
-        public string companyName ="";
-        public string companyNIP ="";
+        public string companyName = "";
+        public string companyNIP = "";
         public decimal basicPayment;
         public decimal bonusPayment;
         public decimal residualIncome;
-        public string requirement ="";
-        public string additionalRequirement ="";
+        public string requirement = "";
+        public string additionalRequirement = "";
         public DateTime deadline;
         public bool isOffer = false;
         public int startOfferts = 0;
@@ -41,7 +42,7 @@ namespace MeMoney.Pages
                 if (reader.Read())
                 {
                     idOfOffer = reader.GetInt32(0);
-                    if(idOfOffer >= 0)
+                    if (idOfOffer >= 0)
                     {
                         isOffer = true;
                     }
@@ -56,14 +57,14 @@ namespace MeMoney.Pages
 
         public void Start(bool wykonywacz)
         {
-            if(wykonywacz)
+            if (wykonywacz)
             {
                 wykonywacz = false;
                 con.Open();
                 string query = "SELECT COUNT(*) FROM Offer";
-                SqlCommand cmd = new SqlCommand(query,con);
+                SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader reader = cmd.ExecuteReader();
-                if(reader.Read())
+                if (reader.Read())
                 {
                     idOfOffer = reader.GetInt32(0);
                 }
@@ -75,7 +76,7 @@ namespace MeMoney.Pages
         public string Wielorazowka()
         {
             idOfOffer--;
-            if(idOfOffer < 0)
+            if (idOfOffer < 0)
             {
                 isOffer = false;
             }
@@ -147,7 +148,29 @@ namespace MeMoney.Pages
             return "";
         }
 
-        
+        public string RandomMemeToButton()
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(1, 5);
+            switch (randomNumber)
+            {
+                case 1:
+                    return "https://i.imgflip.com/6c76pg.jpg";
+                case 2:
+                    return "https://indianmemetemplates.com/wp-content/uploads/Spider-man-whispering.jpg";
+                case 3:
+                    return "https://m.natemat.pl/76a8420d6f4b0f3f0666fcd2b8fabacc,1050,0,0,0.jpg";
+                case 4:
+                    return "https://m.natemat.pl/96ddf4e7259c118b0d70b77b012bb109,1050,0,0,0.jpg";
+                default:
+                    return "";
+            }
+        }
+
+        public string LoadOffersView()
+        {
+            return $"https://localhost:7158/MemsView/pv?id={idOfOffer}";
+        }
 
     }
 }

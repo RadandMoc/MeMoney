@@ -283,3 +283,26 @@ body {
     text-align: center;
     margin-top: 5vh;
 }
+
+.see-memes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+.see-memes img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    transition: all 2s;
+}
+
+.see-memes img:hover {
+    width: 80px;
+    height: 80px;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+}
