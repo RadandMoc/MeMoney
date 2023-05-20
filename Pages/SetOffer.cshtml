@@ -17,60 +17,53 @@
         </a>
     </nav>
     <div class="set-offer-box">
-        <h4>Stwórz ofertę:</h4>
-        <a></a>
+        <h1>Stwórz ofertę</h1>
+        <form asp-controller="OffersController" asp-action="Create" method="post">
+            <input name="__RequestVerificationToken" type="hidden" value="" /> <!-- To jest wymagane dla [ValidateAntiForgeryToken] -->
+            <table>
+                <tr>
+                    <td>Id :</td>
+                    <td><input name="Company" type="number" /></td>
+                </tr>
+                <tr>
+                    <td>Basic Salary :</td>
+                    <td><input name="BasicSalary" type="number" /></td>
+                </tr>
+                <tr>
+                    <td>Additional Salary :</td>
+                    <td><input name="AdditionalSalary" type="number" /></td>
+                </tr>
+                <tr>
+                    <td>Valid From :</td>
+                    <td><input name="ValidFrom" type="datetime-local" /></td>
+                </tr>
+                <tr>
+                    <td>Valid Until :</td>
+                    <td><input name="ValidUntil" type="datetime-local" /></td>
+                </tr>
+                <tr>
+                    <td>Condition :</td>
+                    <td><input name="Condition" type="text" /></td>
+                </tr>
+                <tr>
+                    <td>Additional Condition :</td>
+                    <td><input name="AdditionalCondition" type="text" /></td>
+                </tr>
+                <tr>
+                    <td>If Paid :</td>
+                    <td><input name="IfPaid" type="checkbox" /></td>
+                </tr>
+                <tr>
+                    <td>Maximal Salary1 :</td>
+                    <td><input name="MaximalSalary1" type="number" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input id="Submit1" type="submit" value="submit" /></td>
+                </tr>
+            </table>
+        </form>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
     </div>
-
-
-</div>
-<div>
-    <h1>Stwórz ofertę</h1>
-    <form asp-controller="OffersController" asp-action="Create" method="post">
-        <input name="__RequestVerificationToken" type="hidden" value="" /> <!-- To jest wymagane dla [ValidateAntiForgeryToken] -->
-        <table>
-            <tr>
-                <td>Id :</td>
-                <td><input name="Company" type="number" /></td>
-            </tr>
-            <tr>
-                <td>Basic Salary :</td>
-                <td><input name="BasicSalary" type="number" /></td>
-            </tr>
-            <tr>
-                <td>Additional Salary :</td>
-                <td><input name="AdditionalSalary" type="number" /></td>
-            </tr>
-            <tr>
-                <td>Valid From :</td>
-                <td><input name="ValidFrom" type="datetime-local" /></td>
-            </tr>
-            <tr>
-                <td>Valid Until :</td>
-                <td><input name="ValidUntil" type="datetime-local" /></td>
-            </tr>
-            <tr>
-                <td>Condition :</td>
-                <td><input name="Condition" type="text" /></td>
-            </tr>
-            <tr>
-                <td>Additional Condition :</td>
-                <td><input name="AdditionalCondition" type="text" /></td>
-            </tr>
-            <tr>
-                <td>If Paid :</td>
-                <td><input name="IfPaid" type="checkbox" /></td>
-            </tr>
-            <tr>
-                <td>Maximal Salary1 :</td>
-                <td><input name="MaximalSalary1" type="number" /></td>
-            </tr>
-            <tr>
-                <td colspan="2"><input id="Submit1" type="submit" value="submit" /></td>
-            </tr>
-        </table>
-    </form>
-
-    <div asp-validation-summary="All" class="text-danger"></div>
-
 
 </div>
