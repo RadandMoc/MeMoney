@@ -19,13 +19,13 @@
     </div>
 </div>
 
-
+<div class="set-offer-box">
     <h1>Stwórz nowego autora</h1>
     <form asp-controller="MemAuthors" asp-action="Create" method="post">
         <table>
-           
+
             <tr>
-                <td>NickName :</td>
+                <td>Nickname :</td>
                 <td><input name="NickName" type="text" /></td>
             </tr>
             <tr>
@@ -37,19 +37,14 @@
                 <td><input name="Nazwisko" type="text" /></td>
             </tr>
             <tr>
-                <td>BankAccountNumber :</td>
-                <td><input name="BankAccountNumber" type="text"  /></td>
+                <td>Nr konta bankowego :</td>
+                <td><input name="BankAccountNumber" type="text" /></td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <input  id="Submit1" type="submit" value="submit" />
-                </tr>
+                    <input id="Submit1" type="submit" value="potwierdź" />
             </tr>
         </table>
     </form>
     <div asp-validation-summary="All" class="text-danger"></div>
-
-
-
-
-
+</div>
