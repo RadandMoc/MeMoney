@@ -11,7 +11,7 @@
                 <i class="fa-solid fa-file-invoice-dollar"></i>
             </div>
         </a>
-        <a class="scroll" asp-area="" asp-page="/Index" >
+        <a class="scroll" asp-area="" asp-page="/Index">
             <div id="rightLogo">
                 <img src="~/Images/MeMoneyLogo.png" alt="MeMoney" class="logo" />
             </div>
@@ -33,13 +33,16 @@
                 <p>Wynagrodzenie: @Model.basicPayment zł</p>
             </div>
             <div class="prawica centrowanaTresc">
-                <p>Warunki Dodatkowe: <br/>@Model.additionalRequirement</p>
+                <p>Warunki Dodatkowe: <br />@Model.additionalRequirement</p>
                 <p>Premia: @Model.bonusPayment zł</p>
             </div>
         </div>
-        <a class="see-memes" href=@Model.LoadOffersView()><img src=@Model.RandomMemeToButton() alt="zobacz memy" /></a>
+        <div class="offer-buttons">
+            <a class="see-memes" href=@Model.LoadOffersView()><img src=@Model.RandomMemeToButton() alt="zobacz memy" /></a>
+            <a class="see-memes" href=@Model.DeleteOffer()><i class="fa-solid fa-trash-can"></i></a>
+        </div>
     </div>
-    @while(Model.idOfOffer > 0 )
+    @while (Model.idOfOffer > 0)
     {
         <partial name="_BoxOfOffert" />
     }

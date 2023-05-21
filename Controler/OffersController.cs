@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MeMoney.DBases;
+using Microsoft.Data.SqlClient;
 
 namespace MeMoney.Controler
 {
@@ -117,22 +118,20 @@ namespace MeMoney.Controler
             return View(offer);
         }
 
-        // GET: Offers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: Offers/Delete?id=5
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null || _context.Offer == null)
-            {
-                return NotFound();
-            }
+            string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=MyDb;Trusted_Connection=True;";
+            string queryString = $"DELETE FROM Offer WHERE id={id}";
 
-            var offer = await _context.Offer
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (offer == null)
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                return NotFound();
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                connection.Close();
             }
-
-            return View(offer);
+            return View("https://localhost:7158/ViewOffers");
         }
 
         // POST: Offers/Delete/5

@@ -20,7 +20,10 @@
                     <p>Premia: @Model.bonusPayment zł</p>
                 </div>
             </div>
-            <a class="see-memes" href=@Model.LoadOffersView() ><img src=@Model.RandomMemeToButton() alt="zobacz memy" /></a>
+            <div class="offer-buttons">
+                <a class="see-memes" href=@Model.LoadOffersView()><img src=@Model.RandomMemeToButton() alt="zobacz memy" /></a>
+                <a class="see-memes" href=@Model.DeleteOffer()><i class="fa-solid fa-trash-can"></i></a>
+            </div>
         </div>
         @Model.AddOneToStartOffer()
     }

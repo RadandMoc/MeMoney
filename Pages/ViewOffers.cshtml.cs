@@ -33,7 +33,7 @@ namespace MeMoney.Pages
             SqlDataReader reader;
             con = new SqlConnection(connetionString);
             con.Open();
-            query = "SELECT COUNT(*) FROM Offer";
+            query = "SELECT MAX(Id) FROM Offer";
             cmd = new SqlCommand(query, con);
             reader = cmd.ExecuteReader();
             if (loadDatabase)
@@ -41,7 +41,7 @@ namespace MeMoney.Pages
                 loadDatabase = false;
                 if (reader.Read())
                 {
-                    idOfOffer = reader.GetInt32(0);
+                    idOfOffer = reader.GetInt32(0) +1;
                     if (idOfOffer >= 0)
                     {
                         isOffer = true;
@@ -170,6 +170,11 @@ namespace MeMoney.Pages
         public string LoadOffersView()
         {
             return $"https://localhost:7158/MemsView/pv?id={idOfOffer}";
+        }
+
+        public string DeleteOffer()
+        {
+            return $"https://localhost:7158/Offers/Delete?id={idOfOffer}";
         }
 
     }

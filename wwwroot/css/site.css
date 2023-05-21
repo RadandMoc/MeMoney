@@ -301,19 +301,39 @@ body {
     border-radius: 25px;
 }
 
-    .see-memes img {
+    .see-memes img, .see-memes i {
         height: 50px;
         width: 50px;
         border-radius: 50%;
         transition: all 2s;
+        color: black;
+        background-color: white;
+        font-size: 2em;
+        margin-right: 20px;
+        margin-left: 20px;
     }
 
-        .see-memes img:hover {
+        .see-memes img:hover, .see-memes i:hover {
             width: 80px;
             height: 80px;
             animation-duration: 2s;
             animation-iteration-count: 1;
         }
 
+.offer-buttons {
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    color: black;
+    background-color: white;
+}
+/*
+    .offer-buttons i {
+        color: black;
+        background-color: white;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
 
+    }*/
 /*ctrl + l + m -chowanie i odkrywanie wszystkich funkcji. Wa¿ne by na raz nacisn¹æ */
