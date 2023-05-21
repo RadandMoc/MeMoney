@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MeMoney.DBases;
 using Microsoft.Data.SqlClient;
+using MeMoney.Pages;
 
 namespace MeMoney.Controler
 {
@@ -131,7 +132,7 @@ namespace MeMoney.Controler
                 int rowsAffected = command.ExecuteNonQuery();
                 connection.Close();
             }
-            return View("https://localhost:7158/ViewOffers");
+            return View();
         }
 
         // POST: Offers/Delete/5
