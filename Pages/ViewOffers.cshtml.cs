@@ -135,6 +135,8 @@ namespace MeMoney.Pages
                     else
                         isOffer = false;
                 }
+                else
+                    isOffer = false;
                 reader.Close();
                 con.Close();
             }
