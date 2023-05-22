@@ -55,7 +55,7 @@ namespace MeMoney.Controler
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCompany1,CompanyName1,Person1,NIP1,KRS1")] Company company)
+        public async Task<IActionResult> Create([Bind("IdCompany1,Login,Password,CompanyName1,Person1,NIP1,KRS1")] Company company)
         {
             if (ModelState.IsValid)
             {

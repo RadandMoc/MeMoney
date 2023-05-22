@@ -9,6 +9,14 @@
     <form asp-controller="Companies" asp-action="Create" method="post">
         <input name="__RequestVerificationToken" type="hidden" value="" /> <!-- To jest wymagane dla [ValidateAntiForgeryToken] -->
         <table>
+             <tr>
+                <td>Login :</td>
+                <td><input name="Login" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Password :</td>
+                <td><input name="Password" type="text" /></td>
+            </tr>
             <tr>
                 <td>Nazwa :</td>
                 <td><input name="CompanyName1" type="text" /></td>

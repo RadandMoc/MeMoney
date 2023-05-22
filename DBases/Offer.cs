@@ -12,17 +12,16 @@ namespace MeMoney.DBases
         public decimal AdditionalSalary { get; set; }
         public DateTime ValidFrom { get; set; }
         public DateTime ValidUntil { get; set; }
-        public string Condition { get; set; }
-        public string AdditionalCondition { get; set ; }
+        public string? Condition { get; set; }
+        public string? AdditionalCondition { get; set ; }
         public bool IfPaid { get; set; }
         public decimal MaximalSalary1 { get; set; }
-        public  ICollection<OfferMem> MemOffers { get; set; }
-        public  ICollection<OfferMemAuthor> OffersMemAuthor { get; set; }
+        public  ICollection<OfferMem>? MemOffers { get; set; }
+        public  ICollection<OfferMemAuthor>? OffersMemAuthor { get; set; }
 
-
-        public Offer() 
+        public Offer()
         {
-        }
 
+        }
     }
 }
