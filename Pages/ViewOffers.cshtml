@@ -22,30 +22,33 @@
 </div>
 
 <div class="OffersContainer" id="offerBoxesContainer">
-    <div class="OfferBox">
-        <h4>Nazwa Firmy: @Model.companyName</h4>
-        <p>NIP: @Model.companyNIP</p>
-        <p>Pozostała kwota: @Model.residualIncome</p>
-        <p>Oferta jest aktualna dla memów które spełnią warunki <strong>przed @Model.deadline.ToString()</strong></p>
-        <div class="teniefajne">
-            <div class="lewica centrowanaTresc">
-                <p>Warunki podstawowe: <br />@Model.requirement</p>
-                <p>Wynagrodzenie: @Model.basicPayment zł</p>
+    @if (Model.isOffer && Model.idOfOffer >= 0 && Model.residualIncome > 0)
+    {
+        <div class="OfferBox">
+            <h4>Nazwa Firmy: @Model.companyName</h4>
+            <p>NIP: @Model.companyNIP</p>
+            <p>Pozostała kwota: @Model.residualIncome</p>
+            <p>Oferta jest aktualna dla memów które spełnią warunki <strong>przed @Model.deadline.ToString()</strong></p>
+            <div class="teniefajne">
+                <div class="lewica centrowanaTresc">
+                    <p>Warunki podstawowe: <br />@Model.requirement</p>
+                    <p>Wynagrodzenie: @Model.basicPayment zł</p>
+                </div>
+                <div class="prawica centrowanaTresc">
+                    <p>Warunki Dodatkowe: <br />@Model.additionalRequirement</p>
+                    <p>Premia: @Model.bonusPayment zł</p>
+                </div>
             </div>
-            <div class="prawica centrowanaTresc">
-                <p>Warunki Dodatkowe: <br />@Model.additionalRequirement</p>
-                <p>Premia: @Model.bonusPayment zł</p>
+            <div class="offer-buttons">
+                <a class="see-memes" href=@Model.LoadOffersView()><img src=@Model.RandomMemeToButton() alt="zobacz memy" /></a>
+                <a class="see-memes" href=@Model.DeleteOffer()><i class="fa-solid fa-trash-can"></i></a>
+                <a asp-action="Edit" asp-controller="Offers" asp-route-id="@Model.idOfOffer" method="post">
+                    <input name="__RequestVerificationToken" type="hidden" value="" />
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
             </div>
         </div>
-        <div class="offer-buttons">
-            <a class="see-memes" href=@Model.LoadOffersView()><img src=@Model.RandomMemeToButton() alt="zobacz memy" /></a>
-            <a class="see-memes" href=@Model.DeleteOffer()><i class="fa-solid fa-trash-can"></i></a>
-            <a asp-action="Edit" asp-controller="Offers" asp-route-id="@Model.idOfOffer" method="post">
-                <input name="__RequestVerificationToken" type="hidden" value="" />
-                <i class="fa-solid fa-pen-to-square"></i>
-            </a>
-        </div>
-    </div>
+    }
     @while (Model.idOfOffer > 0)
     {
         <partial name="_BoxOfOffert" />
