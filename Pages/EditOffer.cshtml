@@ -1,0 +1,19 @@
+﻿@page
+@model MeMoney.Pages.EditOfferModel
+@{
+    ViewData["Title"] = "Edit Offer";
+}
+
+<h2>Edit Offer</h2>
+
+<div>
+    <form asp-action="Edit" method="post">
+        @Html.AntiForgeryToken()
+
+       
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

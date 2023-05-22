@@ -69,6 +69,7 @@ namespace MeMoney.Controler
         }
 
         // GET: Offers/Edit/5
+        
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Offer == null)
@@ -83,6 +84,7 @@ namespace MeMoney.Controler
             }
             return View(offer);
         }
+        
 
         // POST: Offers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
