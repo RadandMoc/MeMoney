@@ -21,8 +21,8 @@
                 </div>
             </div>
             <div class="offer-buttons">
-                <a class="see-memes" href=@Model.LoadOffersView()><img src=@Model.RandomMemeToButton() alt="zobacz memy" /></a>
                 <a class="see-memes" href=@Model.DeleteOffer()><i class="fa-solid fa-trash-can"></i></a>
+                <a class="see-memes" href=@Model.LoadOffersView()><img src=@Model.RandomMemeToButton() alt="zobacz memy" /></a>
                 <a asp-action="Edit" asp-controller="Offers" asp-route-id="@Model.idOfOffer" method="post">
                     <input name="__RequestVerificationToken" type="hidden" value="" />
                     <i class="fa-solid fa-pen-to-square"></i>
