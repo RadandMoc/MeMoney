@@ -5,10 +5,16 @@ namespace MeMoney.DBases
 {
     public class OfferMemAuthor
     {
-        [Key, Column(Order = 0)]
+        [Key]
+
+        public int OfferMemAuthorId { get; set; }
+
+
+        [ForeignKey("Offer")]
         public int OfferId { get; set; }
         public virtual Offer Offer { get; set; }
-        [Key, Column(Order = 0)]
+
+        [ForeignKey("MemAuthor")]
 
         public int IdMemAuthor { get; set; }
         public virtual MemAuthor MemAuthor { get; set; }

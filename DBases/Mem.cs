@@ -9,7 +9,7 @@ namespace MeMoney.DBases
         public int IdMem { get ; set; }
         public string MemLink { get; set; }
 
-        public ICollection<OfferMem> MemOffers { get; set; }
+        public ICollection<OfferMem> ?MemOffers { get; set; }
 
     }
 }

@@ -7,6 +7,9 @@ namespace MeMoney.DBases
 
         [Key]
         public int IdMemAuthor { get; set; }
+        public string Login { get; set; }
+
+        public string Password { get; set; }
         public string NickName { get; set; }
         public string Imie { get; set; }
         public string Nazwisko { get; set ; }

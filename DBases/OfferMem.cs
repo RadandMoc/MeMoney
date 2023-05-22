@@ -8,11 +8,11 @@ namespace MeMoney.DBases
         [Key]
         public int OfferMemId { get; set; }
 
-        [Key, Column(Order = 0)]
+        [ForeignKey("Offer")]
         public int OfferId { get; set; }
         public virtual Offer Offer { get; set; }
 
-        [Key, Column(Order = 1)]
+        [ForeignKey("Mem")]
 
         public int MemId { get; set; }
         public virtual Mem Mem { get; set; }

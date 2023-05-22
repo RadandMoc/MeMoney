@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeMoney.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20230513165341_InitialCreate")]
+    [Migration("20230522101717_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -40,8 +40,16 @@ namespace MeMoney.Migrations
                     b.Property<int>("KRS1")
                         .HasColumnType("int");
 
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("NIP1")
                         .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Person1")
                         .IsRequired()
@@ -85,11 +93,19 @@ namespace MeMoney.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nazwisko")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NickName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -137,79 +153,77 @@ namespace MeMoney.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CompanyIdCompany1");
-
                     b.ToTable("Offer");
                 });
 
             modelBuilder.Entity("MeMoney.DBases.OfferMem", b =>
                 {
+                    b.Property<int>("MemId")
+                        .HasColumnType("int");
+
                     b.Property<int>("OfferId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OfferId"));
-
-                    b.Property<int>("MemAuthorId")
+                    b.Property<int>("OfferMemId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OfferId1")
-                        .HasColumnType("int");
+                    b.HasKey("MemId", "OfferId");
 
-                    b.HasKey("OfferId");
-
-                    b.HasIndex("MemAuthorId");
-
-                    b.HasIndex("OfferId1");
+                    b.HasIndex("OfferId");
 
                     b.ToTable("OfferMem");
                 });
 
             modelBuilder.Entity("MeMoney.DBases.OfferMemAuthor", b =>
                 {
+                    b.Property<int>("IdMemAuthor")
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
                     b.Property<int>("OfferId")
-                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
+
+                    b.Property<int>("OfferMemAuthorId")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OfferId"));
+                    b.HasKey("IdMemAuthor", "OfferId");
 
-                    b.Property<int>("MemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OfferId1")
-                        .HasColumnType("int");
-
-                    b.HasKey("OfferId");
-
-                    b.HasIndex("MemId");
-
-                    b.HasIndex("OfferId1");
+                    b.HasIndex("OfferId");
 
                     b.ToTable("OfferMemAuthor");
                 });
 
-            modelBuilder.Entity("MeMoney.DBases.Offer", b =>
-                {
-                    b.HasOne("MeMoney.DBases.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyIdCompany1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-                });
-
             modelBuilder.Entity("MeMoney.DBases.OfferMem", b =>
                 {
-                    b.HasOne("MeMoney.DBases.MemAuthor", "MemAuthor")
-                        .WithMany()
-                        .HasForeignKey("MemAuthorId")
+                    b.HasOne("MeMoney.DBases.Mem", "Mem")
+                        .WithMany("MemOffers")
+                        .HasForeignKey("MemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MeMoney.DBases.Offer", "Offer")
-                        .WithMany()
-                        .HasForeignKey("OfferId1")
+                        .WithMany("MemOffers")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Mem");
+
+                    b.Navigation("Offer");
+                });
+
+            modelBuilder.Entity("MeMoney.DBases.OfferMemAuthor", b =>
+                {
+                    b.HasOne("MeMoney.DBases.MemAuthor", "MemAuthor")
+                        .WithMany("OffersMemAuthor")
+                        .HasForeignKey("IdMemAuthor")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MeMoney.DBases.Offer", "Offer")
+                        .WithMany("OffersMemAuthor")
+                        .HasForeignKey("OfferId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -218,23 +232,21 @@ namespace MeMoney.Migrations
                     b.Navigation("Offer");
                 });
 
-            modelBuilder.Entity("MeMoney.DBases.OfferMemAuthor", b =>
+            modelBuilder.Entity("MeMoney.DBases.Mem", b =>
                 {
-                    b.HasOne("MeMoney.DBases.MemAuthor", "Mem")
-                        .WithMany()
-                        .HasForeignKey("MemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("MemOffers");
+                });
 
-                    b.HasOne("MeMoney.DBases.Offer", "Offer")
-                        .WithMany()
-                        .HasForeignKey("OfferId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            modelBuilder.Entity("MeMoney.DBases.MemAuthor", b =>
+                {
+                    b.Navigation("OffersMemAuthor");
+                });
 
-                    b.Navigation("Mem");
+            modelBuilder.Entity("MeMoney.DBases.Offer", b =>
+                {
+                    b.Navigation("MemOffers");
 
-                    b.Navigation("Offer");
+                    b.Navigation("OffersMemAuthor");
                 });
 #pragma warning restore 612, 618
         }

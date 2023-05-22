@@ -17,6 +17,8 @@ namespace MeMoney.Migrations
                 {
                     IdCompany1 = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CompanyName1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Person1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NIP1 = table.Column<int>(type: "int", nullable: false),
@@ -46,6 +48,8 @@ namespace MeMoney.Migrations
                 {
                     IdMemAuthor = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Login = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NickName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Imie = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Nazwisko = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -75,35 +79,28 @@ namespace MeMoney.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Offer", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Offer_Company_CompanyIdCompany1",
-                        column: x => x.CompanyIdCompany1,
-                        principalTable: "Company",
-                        principalColumn: "IdCompany1",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "OfferMem",
                 columns: table => new
                 {
-                    OfferId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OfferId1 = table.Column<int>(type: "int", nullable: false),
-                    MemAuthorId = table.Column<int>(type: "int", nullable: false)
+                    OfferId = table.Column<int>(type: "int", nullable: false),
+                    MemId = table.Column<int>(type: "int", nullable: false),
+                    OfferMemId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OfferMem", x => x.OfferId);
+                    table.PrimaryKey("PK_OfferMem", x => new { x.MemId, x.OfferId });
                     table.ForeignKey(
-                        name: "FK_OfferMem_MemAuthor_MemAuthorId",
-                        column: x => x.MemAuthorId,
-                        principalTable: "MemAuthor",
-                        principalColumn: "IdMemAuthor",
+                        name: "FK_OfferMem_Mem_MemId",
+                        column: x => x.MemId,
+                        principalTable: "Mem",
+                        principalColumn: "IdMem",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OfferMem_Offer_OfferId1",
-                        column: x => x.OfferId1,
+                        name: "FK_OfferMem_Offer_OfferId",
+                        column: x => x.OfferId,
                         principalTable: "Offer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -113,59 +110,43 @@ namespace MeMoney.Migrations
                 name: "OfferMemAuthor",
                 columns: table => new
                 {
-                    OfferId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OfferId1 = table.Column<int>(type: "int", nullable: false),
-                    MemId = table.Column<int>(type: "int", nullable: false)
+                    IdMemAuthor = table.Column<int>(type: "int", nullable: false),
+                    OfferId = table.Column<int>(type: "int", nullable: false),
+                    OfferMemAuthorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OfferMemAuthor", x => x.OfferId);
+                    table.PrimaryKey("PK_OfferMemAuthor", x => new { x.IdMemAuthor, x.OfferId });
                     table.ForeignKey(
-                        name: "FK_OfferMemAuthor_MemAuthor_MemId",
-                        column: x => x.MemId,
+                        name: "FK_OfferMemAuthor_MemAuthor_IdMemAuthor",
+                        column: x => x.IdMemAuthor,
                         principalTable: "MemAuthor",
                         principalColumn: "IdMemAuthor",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OfferMemAuthor_Offer_OfferId1",
-                        column: x => x.OfferId1,
+                        name: "FK_OfferMemAuthor_Offer_OfferId",
+                        column: x => x.OfferId,
                         principalTable: "Offer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Offer_CompanyIdCompany1",
-                table: "Offer",
-                column: "CompanyIdCompany1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OfferMem_MemAuthorId",
+                name: "IX_OfferMem_OfferId",
                 table: "OfferMem",
-                column: "MemAuthorId");
+                column: "OfferId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OfferMem_OfferId1",
-                table: "OfferMem",
-                column: "OfferId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OfferMemAuthor_MemId",
+                name: "IX_OfferMemAuthor_OfferId",
                 table: "OfferMemAuthor",
-                column: "MemId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OfferMemAuthor_OfferId1",
-                table: "OfferMemAuthor",
-                column: "OfferId1");
+                column: "OfferId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Mem");
+                name: "Company");
 
             migrationBuilder.DropTable(
                 name: "OfferMem");
@@ -174,13 +155,13 @@ namespace MeMoney.Migrations
                 name: "OfferMemAuthor");
 
             migrationBuilder.DropTable(
+                name: "Mem");
+
+            migrationBuilder.DropTable(
                 name: "MemAuthor");
 
             migrationBuilder.DropTable(
                 name: "Offer");
-
-            migrationBuilder.DropTable(
-                name: "Company");
         }
     }
 }
