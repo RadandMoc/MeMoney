@@ -21,7 +21,7 @@ namespace MeMoney.Pages
         public bool isAuthor;
         string connetionString = "Server=(localdb)\\MSSQLLocalDB;Database=MyDb;Trusted_Connection=True;";
         SqlConnection con;
-        bool loadDatabase, loadDatabase2 = true;
+        bool loadDatabase = true, loadDatabase2 = true;
         public void OnGet()
         {
             //Company Start
@@ -150,7 +150,7 @@ namespace MeMoney.Pages
                         AuthorBankAccount = "Not added";
                 }
                 else
-                    isCompany = false;
+                    isAuthor = false;
                 con.Close();
                 reader.Close();
             }
