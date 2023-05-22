@@ -1,4 +1,5 @@
 using MeMoney.DBases;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.JSInterop;
@@ -20,6 +21,13 @@ builder.Services.AddHttpContextAccessor();
 
 
 var app = builder.Build();
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedDatabase.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -51,3 +59,13 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+
+
+
+
+
+
+
+
+

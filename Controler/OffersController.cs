@@ -91,7 +91,7 @@ namespace MeMoney.Controler
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,IdCompany,BasicSalary,AdditionalSalary,ValidFrom,ValidUntil,Condition,AdditionalCondition,IfPaid,MaximalSalary1")] Offer offer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CompanyIdCompany1,BasicSalary,AdditionalSalary,ValidFrom,ValidUntil,Condition,AdditionalCondition,IfPaid,MaximalSalary1")] Offer offer)
         {
             if (id != offer.Id)
             {
@@ -117,6 +117,15 @@ namespace MeMoney.Controler
                     }
                 }
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                // Debugging: print out the validation errors
+                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(p => p.ErrorMessage)).ToList();
+                foreach (var error in errors)
+                {
+                    Console.WriteLine(error);
+                }
             }
             return View(offer);
         }
