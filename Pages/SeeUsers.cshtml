@@ -22,3 +22,43 @@
     </a>
 </nav>
 
+<div class="teniefajne">
+    <div class="lewica">
+        @while (Model.AuthorId > 0)
+        {
+            @Model.MemAuthorData()
+            @if(Model.isAuthor)
+            {
+                <div class="OfferBox">
+                    <h4>Nick: @Model.AuthorNickName</h4>
+                    <p>Imię: @Model.AuthorName</p>
+                    <p>Nazwisko: @Model.AuthorSecondName</p>
+                    <p>Nr konta bankowego: @Model.AuthorBankAccount</p>
+                    <div class="offer-buttons">
+                        <a class="see-memes" href=""><img src="" alt="zobacz memy" /></a>
+                        <a class="see-memes" href=""><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="prawica">
+        @while (Model.CompanyId > 0)
+        {
+            @Model.CompanyData()
+            @if(Model.isCompany)
+            {
+                <div class="OfferBox">
+                    <h4>Nazwa: @Model.CompanyName</h4>
+                    <p>NIP: @Model.CompanyNIP</p>
+                    <p>KRS: @Model.CompanyKRS</p>
+                    <p>Prezes: @Model.CompanyManager</p>
+                    <div class="offer-buttons">
+                        <a class="see-memes" href=""><img src="" alt="zobacz memy" /></a>
+                        <a class="see-memes" href=""><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

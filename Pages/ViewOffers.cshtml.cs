@@ -46,6 +46,8 @@ namespace MeMoney.Pages
                     {
                         isOffer = true;
                     }
+                    else
+                        isOffer = false;
                 }
             }
             reader.Close();
