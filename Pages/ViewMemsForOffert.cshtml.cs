@@ -53,13 +53,14 @@ namespace MeMoney.Pages
             }
             reader.Close();
             con.Close();
+            con = new SqlConnection(connetionString);
             con.Open();
             query = $"SELECT MemLink FROM Mem WHERE IdMem = {first}";
-            cmd = new SqlCommand(query, con);
-            SqlDataReader reader2 = cmd.ExecuteReader();
+            SqlCommand cmd2 = new SqlCommand(query, con);
+            SqlDataReader reader2 = cmd2.ExecuteReader();
             if (reader2.Read())
             {
-                returner = reader2.ToString();
+                returner = reader2["MemLink"].ToString();
             }
             reader2.Close();
             con.Close();
