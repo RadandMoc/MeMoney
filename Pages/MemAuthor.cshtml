@@ -23,7 +23,14 @@
     <h1>Stwórz nowego autora</h1>
     <form asp-controller="MemAuthors" asp-action="Create" method="post">
         <table>
-
+            <tr>
+                <td>Login :</td>
+                <td><input name="Login" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Password :</td>
+                <td><input name="Password" type="text" /></td>
+            </tr>
             <tr>
                 <td>Nickname :</td>
                 <td><input name="NickName" type="text" /></td>

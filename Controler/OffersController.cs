@@ -65,6 +65,15 @@ namespace MeMoney.Controler
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            else
+            {
+                // Debugging: print out the validation errors
+                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(p => p.ErrorMessage)).ToList();
+                foreach (var error in errors)
+                {
+                    Console.WriteLine(error);
+                }
+            }
             return View(offer);
         }
 

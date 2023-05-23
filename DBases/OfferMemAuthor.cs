@@ -9,7 +9,6 @@ namespace MeMoney.DBases
 
         public int OfferMemAuthorId { get; set; }
 
-
         [ForeignKey("Offer")]
         public int OfferId { get; set; }
         public virtual Offer Offer { get; set; }
