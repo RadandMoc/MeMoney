@@ -75,6 +75,7 @@ namespace MeMoney.Pages
 
         public string CompanyData()
         {
+            isCompany = true;
             CompanyId--;
             if(CompanyId < 0)
                 isCompany = false;
@@ -117,6 +118,7 @@ namespace MeMoney.Pages
 
         public string MemAuthorData()
         {
+            isAuthor = true;
             AuthorId--;
             if (AuthorId < 0)
                 isAuthor = false;
