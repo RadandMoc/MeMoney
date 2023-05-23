@@ -74,3 +74,12 @@ button.accept-policy {
 .small-input {
     width: 100px;
 }
+
+.username
+{
+    color:black;
+    align-self: flex-end;
+    justify-items: end;
+    justify-content: end;
+
+}
