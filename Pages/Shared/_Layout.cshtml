@@ -42,6 +42,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/SeeUsers">Użytkownicy</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Wyloguj</a>
+                        </li>
+                        }
+                        else
+                        {
+                        <li class="nav-item">
+                            <form class="d-flex my-2 my-lg-0" method="post" asp-controller="Account" asp-action="Login">
+                                <input class="form-control me-2 small-input" type="text" placeholder="Login" id="loginInput" name="Username" required />
+                                <input class="form-control me-2 small-input" type="password" placeholder="Hasło" id="passwordInput" name="Password" required />
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Zaloguj się</button>
+                            </form>
+                        </li>
+                        }
                     </ul>
                 </div>
             </div>

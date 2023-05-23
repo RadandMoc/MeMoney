@@ -70,3 +70,7 @@ button.accept-policy {
     background-color: darkgray;
     color: white;
 }
+
+.small-input {
+    width: 100px;
+}
