@@ -50,7 +50,7 @@ namespace MeMoney.Controler
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, user.Login)
+                    new Claim(ClaimTypes.Name, companyUser.Login)
                     // You can add more claims if required
                 };
 
