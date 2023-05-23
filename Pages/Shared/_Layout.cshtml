@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using MeMoney.Controler;
+@using Microsoft.AspNetCore.Identity;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,21 +26,30 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Start</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/ViewOffers">Zlecenia na memy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/SetOffer">Złóż zlecenie na memy</a>
-                        </li>
+                        @{
+                            var userProperties = AccountController.UserProperties;
+                        }
+
+                        @if (userProperties != null && userProperties.IsMemAuthor )
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/ViewOffers">Zlecenia na memy</a>
+                            </li>
+                        }
+                        else if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/SetOffer">Złóż zlecenie na memy</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Regulamin</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" id="hamskoWymusze" onclick="register()">Zarejestruj się</a>
-                        </li>
+                       
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/SeeUsers">Użytkownicy</a>
                         </li>
@@ -54,6 +65,9 @@
                         }
                         else
                         {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="hamskoWymusze" onclick="register()">Zarejestruj się</a>
+                            </li>
                         <li class="nav-item">
                             <form class="d-flex my-2 my-lg-0" method="post" asp-controller="Account" asp-action="Login">
                                 <input class="form-control me-2 small-input" type="text" placeholder="Login" id="loginInput" name="Username" required />
