@@ -24,7 +24,7 @@ namespace MeMoney.Pages
                 wykonywacz = false;
                 con = new SqlConnection(connetionString);
                 con.Open();
-                string query = $"SELECT COUNT(*) FROM OfferMem WHERE OfferMemId = {OfferId}";
+                string query = $"SELECT COUNT(*) FROM OfferMem WHERE OfferId = {OfferId}";
                 SqlCommand cmd = new SqlCommand(query, con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -44,7 +44,7 @@ namespace MeMoney.Pages
             int first = 0;
             con = new SqlConnection(connetionString);
             con.Open(); //Tutaj pokaza³ siê b³¹d Ÿle skonfigurowanej bazy danych. nie ma po³¹czenia oferta-mem. Mimo wszystko, je¿eli zostanie zamontowane, to wystarczy zamieniæ MemAuthorId na nazwê id memów, OfferId1 na nazwê id ofert, OfferId ma mazwê id tejtabelki poprawionej, oraz OfferMem na nazwê nowej tabelki
-            string query = $"SELECT MemId FROM OfferMem WHERE OfferMemId = {OfferId} ORDER BY OfferId OFFSET {copyOfNumMems} ROWS FETCH NEXT 1 ROWS ONLY";
+            string query = $"SELECT MemId FROM OfferMem WHERE OfferId = {OfferId} ORDER BY OfferMemId OFFSET {copyOfNumMems} ROWS FETCH NEXT 1 ROWS ONLY";
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
